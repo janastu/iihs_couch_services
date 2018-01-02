@@ -9,8 +9,15 @@ services:
       # This line maps the contents of the client folder into the container.
     ports:
       - "80:80"
+    links:
+      - superlogin:superlogin
+      - couchdb:couchdb  
+  couchdb:
+    environment:
+     - COUCHDB_USER:adminusername
+     - COUCHDB_PASSWORD:adminpassword
     volumes:
-      - ./client:/usr/src/app
+     - ./client:/usr/src/app
 
   # Build the container using the superlogin Dockerfile
   superlogin:
@@ -19,7 +26,6 @@ services:
      - "3000:3000"
     # Link the client container so that Nginx will have access to it
     links:
-     - client
      - couchdb:couchdb
   couchdb:
     environment:

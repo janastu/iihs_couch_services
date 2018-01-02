@@ -17,7 +17,7 @@ import { ComponentsService } from './services/components-service';
 import { Service } from './services/services';
 //import { SpinnerModule } from 'angular-spinners';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-
+import { Settings } from './services/settings';
 
 
 
@@ -49,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         })
         
     ],
-    providers: [AuthGuard,Global,HttpClient,JsonConvert,BoardService,CategoryService,DataService,ComponentsService,Service],
+    providers: [AuthGuard,Global,HttpClient,JsonConvert,BoardService,CategoryService,DataService,ComponentsService,Service,Settings],
     bootstrap: [AppComponent]
 })
 export class AppModule {
