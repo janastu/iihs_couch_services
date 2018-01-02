@@ -1,0 +1,20 @@
+{
+  "name": "auth-index-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "salus.sage",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "morgan": "^1.9.0",
+    "superlogin": "^0.6.1"
+  }
+}

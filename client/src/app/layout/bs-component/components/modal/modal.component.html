@@ -1,0 +1,76 @@
+<!--<div class="row">
+    <div class="col-sm-12">
+        <div class="card mb-3">
+            <div class="card-header">Modal</div>
+         Large modal 
+            <div class="card-block">-->
+                
+                <ng-template  #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal title</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                         
+                              <div class="col-sm-6 offset-sm-3">
+                          
+                            <div class="card-blocks">
+                                <div class="row">
+                                  <div class="row">
+                                  <div class="article-tool-bar">
+                                   
+                                   
+                                   
+                                    
+                                      <button class="readlater btn btn-sm btn-success" (click)="readlater(item)"><i class="fa fa-fw fa-bookmark-o"></i></button>
+                                   
+                                    
+                                      <button class="hide btn btn-sm btn-success"><i class="fa fa-close hide-icon">
+                                        </i></button>
+                                    
+                                    </div>
+                                  </div>
+                    
+                                    <div class="row">
+                                     <a><h4 class="feed-heading"><strong>{{item.title}}</strong></h4></a>
+
+                                    </div>
+                                    
+                                    <div class="row">
+                                    <a class="metadata-article">
+                                       {{item.category}}     
+                                    </a>
+                                    <a class="metadata-article">
+                                       {{item.date}}      
+                                    </a>
+                                    </div>
+                                    
+                                    <div class="row">
+                                      <img data-external="yes" src="http://drpattydental.com/wp-content/uploads/2017/05/placeholder.png" data-image-enhancer="larger than 578" class="article-image">
+                                    </div>
+                                    <div class="row">
+                                      <div class="feed-content article-feed-content">
+                                             {{item.desc}}
+                                          </div>
+                                    </div>
+                                  
+
+                              </div>
+                          
+                          </div>
+
+                            </div> 
+                             
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                    </div>
+                </ng-template>
+           <!-- </div>
+        </div>
+    </div>
+</div>-->

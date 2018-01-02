@@ -1,0 +1,32 @@
+version: '2'
+volumes:
+  couchdb_data: {}
+services:
+
+  # Build the container using the client Dockerfile
+  client:
+    build: ./client
+      # This line maps the contents of the client folder into the container.
+    ports:
+      - "80:80"
+    volumes:
+      - ./client:/usr/src/app
+
+  # Build the container using the superlogin Dockerfile
+  superlogin:
+    build: ./superlogin
+    ports:
+     - "3000:3000"
+    # Link the client container so that Nginx will have access to it
+    links:
+     - client
+     - couchdb:couchdb
+  couchdb:
+    environment:
+     - COUCHDB_USER:adminusername
+     - COUCHDB_PASSWORD:adminpassword
+    image: klaemo/couchdb:1.6-couchperuser
+    ports:
+     - "5984:5984"
+    volumes:
+       - "couchdb_data:/usr/local/var/lib/couchdb"

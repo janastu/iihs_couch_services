@@ -1,0 +1,32 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row">
+        <div class="col-md-4 push-md-4">
+
+            <img class="user-avatar  img-log" src="assets/images/radio.png"/>
+            <h1>Media Monitor</h1>
+            <form role="form" [formGroup]="registerForm">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="User Name" formControlName="username">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email" formControlName="email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password" formControlName="password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password" formControlName="confirmpassword">
+                    </div>
+                </div>
+                <a class="btn rounded-btn" (click)="onregister()"> Register </a>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+            </form>
+        </div>
+    </div>
+</div>

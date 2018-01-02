@@ -1,0 +1,21 @@
+version: '2'
+volumes:
+  couchdb_data: {}
+services:
+  superlogin:
+    build: .
+    restart: always
+    ports:
+     - "3000:3000"
+    links:
+     - couchdb:couchdb
+  couchdb:
+    environment: 
+     - COUCHDB_USER:adminusername
+     - COUCHDB_PASSWORD:adminpassword
+    image: klaemo/couchdb:1.6-couchperuser
+    ports: 
+     - "5984:5984"
+    volumes: 
+     - "couchdb_data:/usr/local/var/lib/couchdb"
+
