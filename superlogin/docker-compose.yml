@@ -15,7 +15,7 @@ services:
      - COUCHDB_PASSWORD:adminpassword
     image: klaemo/couchdb:1.6-couchperuser
     ports: 
-     - "5984:5984"
+     - "8123:8123"
     volumes: 
      - "couchdb_data:/usr/local/var/lib/couchdb"
 

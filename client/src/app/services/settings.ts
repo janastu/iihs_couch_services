@@ -11,15 +11,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Settings{
 	protocol:any='http://';
-	port:any=5984;
-	host:any='localhost';
-	dbfeed:any='/feeds';
+	//port:any=;
+	host: any = 'login.test.openrun.net';
+	dbfeed: any = '/feeds';
 	dbannotations:any='/iihs_annotation';
 	dbboards:any='/boards';
 	couchdbusername:any='admin';
-	couchdbpassword:any='admin';
-	superloginserverUrl:any='http://localhost:3001'
+	couchdbpassword:any='!!hs2018';
+	superloginserverUrl: any = 'http://client.test.openrun.net:3001'
 
 
-	
+
 }

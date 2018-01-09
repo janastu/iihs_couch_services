@@ -27,7 +27,6 @@ fromdate = this.formBuilder.control('', [Validators.required]);
 todate = this.formBuilder.control('', [Validators.required]);
 selectedVal:any;
 desc:any;
-newsletter:any;
 
 loading: boolean = false;
 
