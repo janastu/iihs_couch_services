@@ -5,6 +5,8 @@ services:
 
   # Build the container using the client Dockerfile
   client:
+    env_file:
+      - ./superlogin/variables.env
     build: ./client
       # This line maps the contents of the client folder into the container.
     ports:
@@ -14,13 +16,15 @@ services:
       - couchdb:couchdb  
   couchdb:
     environment:
-     - COUCHDB_USER:adminusername
-     - COUCHDB_PASSWORD:adminpassword
+      - COUCHDB_USER:process.env.dbuser
+      - COUCHDB_PASSWORD:process.env.dbpassword
     volumes:
-     - ./client:/usr/src/app
+      - ./client:/usr/src/app
 
   # Build the container using the superlogin Dockerfile
   superlogin:
+    env_file:
+      - ./superlogin/variables.env
     build: ./superlogin
     ports:
      - "3000:3000"
@@ -29,8 +33,8 @@ services:
      - couchdb:couchdb
   couchdb:
     environment:
-     - COUCHDB_USER:adminusername
-     - COUCHDB_PASSWORD:adminpassword
+     - COUCHDB_USER:process.env.dbuser
+     - COUCHDB_PASSWORD:process.env.dbpassword
     image: klaemo/couchdb:1.6-couchperuser
     ports:
      - "5984:5984"

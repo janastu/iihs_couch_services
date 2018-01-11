@@ -10,6 +10,7 @@
   "author": "salus.sage",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "body-parser": "^1.18.2",
     "debug": "^3.1.0",
     "express": "^4.16.2",
