@@ -36,6 +36,8 @@ Confiure the Couchdb database
    
    2) click on Configure single node type admin username and passwordand click on Configure.
    
+   3) Enabling Cors : Click on Configuration and Select Cors and select option as Enable Cors for all domains.After enabling in Main       config make sure in cors section cors is enabled,headers,method and origins are present 
+   
    3) Replicate the database if present from localhost else create database called feeds.
    
    4) Restart the couchdb service and make sure sl_users database is created to enable the Superlogin module to work after configuration
