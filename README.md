@@ -38,7 +38,7 @@ Confiure the Couchdb database
    
    3) Replicate the database if present from localhost else create database called feeds.
    
-   4) Restart the couchdb service to enable the Superlogin module to work after configuration
+   4) Restart the couchdb service and make sure sl_users database is created to enable the Superlogin module to work after configuration
    
 Test the Superlogin by Postman
 
