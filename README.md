@@ -29,7 +29,14 @@ b) For Production deployment
    
    2) Change theusername,password,host,superloginurl in /client/src/environments/environment.ts  for client application configurations
    
-   
+Build the Dockerfile using    
+
+     docker-compose build
+
+Run the Dockerfile using     
+    
+    docker-compose up
+   
 Confiure the Couchdb database
    
    1) navigate to domainname of couchdb and select Setup 
