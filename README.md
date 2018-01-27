@@ -27,7 +27,7 @@ b) For Production deployment
    1) Change username,password,host in varaibles.env file present in /superlogin  for superlogin configurations 
    
    
-   2) Change theusername,password,host,superloginurl in /client/src/environments/environment.ts  for client application configurations
+   2) Change theusername,password,host,superloginurl in /client/src/environments/environment.prod.ts  for client application configurations
    
 Build the Dockerfile using    
 
