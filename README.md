@@ -41,7 +41,7 @@ Confiure the Couchdb database
    
    1) navigate to domainname of couchdb and select Setup 
    
-   2) click on Configure single node type admin username and passwordand click on Configure.
+   2) click on Configure single node type admin username and password for db which will be used in superlogin/variables.env and click on Configure.
    
    3) Enabling Cors : Click on Configuration and Select Cors and select option as Enable Cors for all domains.After enabling in Main       config make sure in cors section cors is enabled,headers,method and origins are present 
    
