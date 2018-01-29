@@ -27,14 +27,21 @@ b) For Production deployment
    1) Change username,password,host in varaibles.env file present in /superlogin  for superlogin configurations 
    
    
-   2) Change theusername,password,host,superloginurl in /client/src/environments/environment.ts  for client application configurations
+   2) Change theusername,password,host,superloginurl in /client/src/environments/environment.prod.ts  for client application configurations
    
-   
+Build the Dockerfile using    
+
+     docker-compose build
+
+Run the Dockerfile using     
+    
+    docker-compose up
+   
 Confiure the Couchdb database
    
    1) navigate to domainname of couchdb and select Setup 
    
-   2) click on Configure single node type admin username and passwordand click on Configure.
+   2) click on Configure single node type admin username and password for db which will be used in superlogin/variables.env and click on Configure.
    
    3) Enabling Cors : Click on Configuration and Select Cors and select option as Enable Cors for all domains.After enabling in Main       config make sure in cors section cors is enabled,headers,method and origins are present 
    
