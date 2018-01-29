@@ -3,7 +3,8 @@ import { routerTransition } from '../router.animations';
 import { FormBuilder,Validators, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Userservice } from '../services/userservice';
-import { ComponentsService } from '../services/components-service';
+import { GroupService } from '../services/group-service';
+import { Global } from '../shared';
 import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     alertauth:boolean= false;
     alertmissing:boolean=false;
     errormessage:any;
-    constructor(public router: Router,public formBuilder:FormBuilder,private userService:Userservice,public componentsService:ComponentsService,public ngAlert:NgbAlertConfig) {
+    constructor(public router: Router,public formBuilder:FormBuilder,private userService:Userservice,public groupService:GroupService,public ngAlert:NgbAlertConfig,public variab:Global) {
               
 
             }
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
             password:this.password
 
         });
-       
+      
     }
 
     onLoggedin() {
@@ -42,6 +43,8 @@ export class LoginComponent implements OnInit {
             'password':this.password.value
         };
         //console.log("log",credentials);
+        
+        
 
         this.userService.login(credentials).then(response=>{
             
@@ -49,7 +52,8 @@ export class LoginComponent implements OnInit {
                 //alert('Login Successful');
                 this.alertsuccess=true;
                 this.ngAlert.type = 'success';
-
+               localStorage.setItem('isLoggedin', 'true');
+               localStorage.setItem('name', this.username.value);
                this.router.navigate(['/dashboard']);
             }
             if(response['error'] == 'Unauthorized'){
@@ -68,8 +72,7 @@ export class LoginComponent implements OnInit {
             }
         })
 
-        localStorage.setItem('isLoggedin', 'true');
-        localStorage.setItem('name', this.username.value);
+        
     }
     public closeAlert() {
         this.alertsuccess=false;

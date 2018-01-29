@@ -5,16 +5,16 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var SuperLogin = require('superlogin');
 var cors = require('cors')
-const fs = require('fs')
-const dotenv = require('dotenv')
-const envConfig = dotenv.parse(fs.readFileSync('./variables.env'))
+//const fs = require('fs')
+//const dotenv = require('dotenv')
+//const envConfig = dotenv.parse(fs.readFileSync('./variables.env'))
 
 
 
-for (var k in envConfig) {
-  process.env[k] = envConfig[k]
+//for (var k in envConfig) {
+ // process.env[k] = envConfig[k]
   //console.log(process.env[k]);
-}
+//}
 
 //var CONFIG = require('../config.json');
 /*

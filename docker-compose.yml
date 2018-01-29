@@ -4,23 +4,29 @@ volumes:
 services:
 
 # Build Couchdb Service
+  
   couchdb:
     env_file:
-     - ./superlogin/variables.env
+     - variables.env
     build: ./couchdb 
-    environment:
-     - COUCHDB_USER:process.env.dbuser
-     - COUCHDB_PASSWORD:process.env.dbpassword
-#    image: klaemo/couchdb:1.6-couchperuser
     ports:
      - "5984:5984"
     volumes:
      - "couchdb_data:/usr/local/var/lib/couchdb"
 
+#Build Feedparser Service
+
+  feedparser:
+    env_file:
+     - variables.env
+    build: ./feedparser
+    ports:
+     - "3500:3500"
+
 # Build the container using the superlogin Dockerfile
   superlogin:
     env_file:
-     - ./superlogin/variables.env
+     - variables.env
     build: ./superlogin
     ports:
      - "3000:3000"
@@ -30,13 +36,15 @@ services:
 # Build the container using the client Dockerfile
   client:
     build: ./client
-      # This line maps the contents of the client folder into the container.
+    env_file:
+     - variables.env
+# This line maps the contents of the client folder into the container.
     ports:
      - "80:80"
     links:
      - superlogin:superlogin
      - couchdb:couchdb  
- 
+     - feedparser:feedparser
 
  
   
