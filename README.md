@@ -6,6 +6,7 @@ Client  contains the Web Application
 
 Super Login  contains the Superlogin service which is used for User Registration and Login Purpose
 
+FeedParser contains the Services used to parse feeds from xml files
 
 Installation and Configuration
 
@@ -65,7 +66,7 @@ b) For Production deployment
   
    
    
-Navigate to the iihs_couch_services in your terminal
+Navigate to the iihs_couch_services in your docker terminal
 
 
 Build the Dockerfile using    
@@ -76,17 +77,17 @@ Run the Dockerfile using    
     
     docker-compose up
    
-Confiure the Couchdb database
+Configure the Couchdb database
    
-   1) navigate to dbhost with port number (192.168.99.100:5984/_utils) of couchdb and select Setup 
+   1) Navigate to dbhost with port number (192.168.99.100:5984/_utils) of couchdb and select Setup 
    
-   2) click on Configure single node type admin username and password for db which will be used in couch db admin username and password and click on Configure.
+   2) Click on Configure single node type admin username and password for db which will be used in couch db admin username and password and click on Configure.
    
    3) Verify the installation by clicking on verify and then verify installation button 
    
    4) Enabling Cors : Click on Configuration and Select Cors and select option as Enable Cors for all domains.After enabling in Main       config make sure in cors section cors is enabled,headers,method and origins are present 
    
-   5) Make sure sl_users database is created to enable the Superlogin module to work after configuration
+   5) Navigate to dbhost with port number (192.168.99.100:5984/_utils) of couchdb and Make sure sl_users database is created to enable the Superlogin module to work after configuration
    
 Test the Superlogin Services using Postman
 
