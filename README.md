@@ -96,7 +96,7 @@ Test the Superlogin Services using Postman
    
    2) In Authoriazation click on Basic Auth and type username and password of Couchdb Databse and update the preview request
    
-   3)In Body use x-www-form-urlencoded
+   3) In Body use x-www-form-urlencoded
        
        name:John
        username:johnsmaith
