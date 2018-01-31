@@ -79,18 +79,18 @@ Run the Dockerfile using    
    
 Configure the Couchdb database
    
-   1) Navigate to dbhost with port number (192.168.99.100:5984/_utils) of couchdb and select Setup 
+   1) Navigate to dbhost with port number of couchdb (192.168.99.100:5984/_utils)  and select Setup 
    
    2) Click on Configure single node type admin username and password for db which will be used in couch db admin username and password and click on Configure.
    
-   3) Verify the installation by clicking on verify and then verify installation button 
+   3) Verify the installation of Couchdb ,Click on verify in side tab and then click on verify installation button and after verification make sure all fields have tick marks 
    
-   4) Enabling Cors : Click on Configuration and Select Cors and select option as Enable Cors for all domains.After enabling in Main       config make sure in cors section cors is enabled,headers,method and origins are present 
+   4) Enabling Cors : Click on Configuration and Select Cors and select option as Enable Cors for all domains, After enabling in Main       config make sure in cors section cors is enabled,headers,method and origins are present 
    
-   5) Navigate to dbhost with port number (192.168.99.100:5984/_utils) of couchdb and Make sure sl_users database is created to enable the Superlogin module to work after configuration
+   5) Navigate to dbhost with port number  of couchdb  (192.168.99.100:5984/_utils) and Make sure sl_users database is created to enable the Superlogin module to work after configuration
    
 
-Test the Superlogin Services using Postman
+Test the Superlogin Services using Postman (https://www.getpostman.com/)
 
    1) Open Postman and make the HTTP Post request to dbhost with port number with /auth/register like 192.168.99.100:3000/auth/register 
    
@@ -104,7 +104,7 @@ Test the Superlogin Services using Postman
        password:john12345
        confirmPassword:john12345
       
-   4) Make the post request and response should be "User Created Successfully"
+   4) Make the post request, if the response is "User Created Successfully" then the Superlogin service is configured with Couchdb Database
    
    
  
