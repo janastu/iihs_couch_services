@@ -89,6 +89,7 @@ Configure the Couchdb database
    
    5) Navigate to dbhost with port number (192.168.99.100:5984/_utils) of couchdb and Make sure sl_users database is created to enable the Superlogin module to work after configuration
    
+
 Test the Superlogin Services using Postman
 
    1) Open Postman and make the HTTP Post request to dbhost with port number with /auth/register like 192.168.99.100:3000/auth/register 
