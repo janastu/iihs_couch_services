@@ -2,10 +2,12 @@ const express = require('express')
 const app = express();
 var cors = require('cors')
 var myProductName = "feedParserDemo"; myVersion = "0.4.3";
+const reque = require ("request");
+const FeedParser = require ("feedparser");
 //const dotenv = require('dotenv')
 //const fs = require('fs')
 //const envConfig = dotenv.parse(fs.readFileSync('./variables.env'))
-
+ 
 
 
 //for (var k in envConfig) {
@@ -22,11 +24,15 @@ var dbpassword= CONFIG.dbpassword;
 var dbuserDB=CONFIG.dbuserDB;
 var dbcouchAuthDB=CONFIG.dbcouchAuthDB;
 */
-
-var domain=process.env.domainname;
+var dbprotocol = process.env.protocol;
+console.log(dbprotocol);
+var domain=process.env.host;
+console.log(domain);
+var couchdbdomain=dbprotocol + domain;
+console.log(couchdbdomain);
 var port=process.env.feedparserport;
 console.log(port);
-console.log(domain);
+
 
 
 
@@ -70,8 +76,7 @@ app.get('/',cors(),function(req, res) {
 	  
 	
 
-const reque = require ("request");
-const FeedParser = require ("feedparser");
+
 
 
 

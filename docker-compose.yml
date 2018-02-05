@@ -8,7 +8,7 @@ services:
   couchdb:
     env_file:
      - variables.env
-    build: ./couchdb 
+    build: ./couchdb  
     ports:
      - "5984:5984"
     volumes:
