@@ -5,88 +5,40 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var SuperLogin = require('superlogin');
 var cors = require('cors')
-//const fs = require('fs')
-//const dotenv = require('dotenv')
-//const envConfig = dotenv.parse(fs.readFileSync('./variables.env'))
 
-
-
-//for (var k in envConfig) {
- // process.env[k] = envConfig[k]
-  //console.log(process.env[k]);
-//}
-
-//var CONFIG = require('../config.json');
-/*
-var dbprotocol = CONFIG.dbprotocol;
-var dbhost = CONFIG.dbhost;
-var dbuser = CONFIG.dbuser;
-var dbpassword= CONFIG.dbpassword;
-var dbuserDB=CONFIG.dbuserDB;
-var dbcouchAuthDB=CONFIG.dbcouchAuthDB;
-*/
-var dbprotocol = process.env.protocol;
+var dbprotocol = process.env.dbprotocol;
 console.log(dbprotocol);
-var dbhost = process.env.host;
+var dbhost = process.env.dbhost;
 console.log(dbhost);
-var couchdbport=process.env.couchdbport;
-var dbhostwidport=dbhost + ':' +couchdbport;
+//var couchdbport=process.env.couchdbport;
+var dbhostwidprotocol=dbprotocol +dbhost;
 
-console.log(dbhostwidport); 
+console.log(dbhostwidprotocol); 
 
-var dbuser = process.env.couchdbusername;
-var dbpassword= process.env.couchdbpassword;
+var dbuser = process.env.dbuser;
+var dbpassword= process.env.dbpassword;
 console.log(dbuser);
 console.log(dbpassword);
 
-var port=process.env.superloginport;
-var couchdbdomain=dbprotocol + dbhost;
+var port=process.env.superloginurl;
+//var couchdbdomain=dbprotocol + dbhost;
 
-console.log(couchdbdomain);
+//console.log(couchdbdomain);
 console.log(port);
-var dbuserDB=process.env.dbuserDB;
-var dbcouchAuthDB=process.env.dbcouchAuthDB;
 
 var app = express();
-app.set('port', process.env.superloginport || 3000);
+app.set('port', process.env.superloginurl || 3000);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//Change the whitelist
 
-//var whitelist = [couchdbdomain]
-/*
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-*/
-var corsOptions = {
-  "origin": "*",
-  "allowedHeaders":['Content-Type', 'Authorization'],
-  "methods": ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-  "preflightContinue": true,
-  "optionsSuccessStatus": 204
-  
-}
-app.options('*',cors())
-//app.use(cors())
- /*
-app.get('/products/:id',cors(corsOptions), function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
-*/ 
+
 
 var config = {
   dbServer: {
     protocol: dbprotocol,
-    host: dbhostwidport,          //Host name for Couchdb Database
+    host: dbhostwidprotocol,          //Host name for Couchdb Database
     user: dbuser,                    //User name for Couchdb Database
     password: dbpassword,     //Password for Couchdb Database
     userDB:'sl-users',
@@ -111,17 +63,22 @@ var config = {
  
 // Initialize SuperLogin 
 var superlogin = new SuperLogin(config);
- 
+
+app.use(function(req, res, next) {
+  //var allowedOrigins = ['http://127.0.0.1:8020', 'http://localhost:8020', 'http://127.0.0.1:9000', 'http://localhost:9000'];
+  var allowedOrigins='http://192.168.99.100';
+  var origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+       res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
+  return next();
+}); 
 // Mount SuperLogin's routes to our app 
-app.use('/auth', superlogin.router, cors(corsOptions));
+app.use('/auth', superlogin.router);
  
 http.createServer(app).listen(app.get('port'));
 
-/*app.get('/auth',cors(corsOptions), function (req, res, next) {
-  next();
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
-
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})*/
