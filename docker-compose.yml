@@ -8,7 +8,7 @@ services:
   couchdb:
     env_file:
      - variables.env
-    build: ./couchdb  
+    build: ./iihs_curation_couch  
     ports:
      - "5984:5984"
     volumes:
@@ -19,7 +19,9 @@ services:
   feedparser:
     env_file:
      - variables.env
-    build: ./feedparser
+    build: ./iihs_curation_feedparser
+    depends_on:
+     - couchdb  
     ports:
      - "3500:3500"
 
@@ -27,7 +29,9 @@ services:
   superlogin:
     env_file:
      - variables.env
-    build: ./superlogin
+    build: ./iihs_curation_auth
+    depends_on:
+     - couchdb
     ports:
      - "3000:3000"
     # Link the client container so that Nginx will have access to it
@@ -35,7 +39,11 @@ services:
      - couchdb:couchdb
 # Build the container using the client Dockerfile
   client:
-    build: ./client
+    build: ./iihs_curation_dashboard
+    depends_on:
+    - superlogin 
+    - couchdb
+    - feedparser
     env_file:
      - variables.env
 # This line maps the contents of the client folder into the container.
