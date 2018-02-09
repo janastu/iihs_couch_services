@@ -11,14 +11,14 @@ https://github.com/janastu/iihs_curation_auth
 
 iihs_curation_feedparser  contains the Services used to parse feeds from xml files and it can be cloned from the url  https://github.com/janastu/iihs_curation_feedparser
 
-iihs_curation_couch contians the couchdb database for the application and it can be clone from the url https://github.com/janastu/iihs_curation_couch
+iihs_curation_couch contians the couchdb database for the application and it can be cloned from the url https://github.com/janastu/iihs_curation_couch
 
 
 Installation and Configuration
 
   1) Open Terminal and clone the project https://github.com/janastu/iihs_couch_services
 
-  2) Set the admin username and password for couchdb in local.ini files of the iihs_curation_couch  in admin section before building the docker file as below
+  2) Set the admin username and password for couchdb in local.ini files of the iihs_curation_couch  in admin section as below before building docker file
   
              [admins]
              <username>=<password>
