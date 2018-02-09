@@ -111,7 +111,14 @@ Enter virtual host name in  Dbhost,authost,feedParserhost respectively for Produ
            feedParserhost                   //FeedParser URL
            feedParserPort                   //FeedParser Port
   
+   3) Change the value of host in config of dbserver from dbhostwidport to dbhost in index.js of iihs_couch_auth service
    
+                var config = {
+              dbServer: {
+                --host: dbhostwidport
+                ++host:dbhost
+                }
+                }
    
 Navigate to the iihs_couch_services in your docker terminal
 
