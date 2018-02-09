@@ -98,6 +98,9 @@ b) For Production deployment
    2) Change the varibales in /client/src/environments/environment.prod.ts  for client application configurations
       as follows
       
+Enter virtual host name in  Dbhost,authost,feedParserhost respectively for Production 
+
+
            dbprotocol                      //like http or https
            dbhost                           //URL of  couch db database 
            dbPort                           //Couchdb Service Port
