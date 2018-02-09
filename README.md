@@ -1,6 +1,7 @@
 # iihs_couch_services
 Docker Services for IIHS Curation Dashboard
 
+Individual Services should be cloned from the git repositery.
 
 iihs_curation_dashboard is for client  application which contains the Web Application and it can be cloned from the url https://github.com/janastu/iihs_curation_dashboard
 
@@ -18,7 +19,19 @@ Installation and Configuration
 
   1) Open Terminal and clone the project https://github.com/janastu/iihs_couch_services
 
-  2) Set the admin username and password for couchdb in local.ini files of the iihs_curation_couch  in admin section as below before building docker file
+  2) Navigate to iihs_couch_service folder and Clone the individual service in the iihs_couch_service folder using the command 
+  
+               git clone  https://github.com/janastu/iihs_curation_dashboard
+          
+               git clone  https://github.com/janastu/iihs_curation_auth
+          
+               git clone  https://github.com/janastu/iihs_curation_feedparser
+           
+               git clone  https://github.com/janastu/iihs_curation_couch
+          
+  
+  
+  Set the admin username and password for couchdb in local.ini files of the iihs_curation_couch  in admin section as below before building docker file
   
              [admins]
              <username>=<password>
@@ -112,7 +125,7 @@ Run the Dockerfile using    
 
 Test the Superlogin Services using Postman (https://www.getpostman.com/)
 
-   1) Open Postman and make the HTTP Post request to dbhost with port number with /auth/register like 192.168.99.100:3000/auth/register 
+   1) Open Postman and make the HTTP Post request to authservice with port number with /auth/register in the url like authurl:port/auth/register 
    
    2) In Authoriazation click on Basic Auth and type username and password of Couchdb Databse and update the preview request
    
