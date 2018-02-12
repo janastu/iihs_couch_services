@@ -44,7 +44,7 @@ a) For local deployment
    1) Change the variables in varaibles.env file present in root directory 
    
            dbprotocol                //like http or https
-           dbhost                    //URL of  couch db database 
+           dbhost                    //URL of  couch db database : with port number 
            dbPort                    //Couchdb Service Port
            dbuser                    //Couchdb admin username                  
            dbpassword                 //Cocuhdb admin password
@@ -65,13 +65,13 @@ a) For local deployment
       as follows
       
            dbprotocol                      //like http or https
-           dbhost                           //URL of  couch db database 
+           dbhost                           //URL of  couch db database with : port number 
            dbPort                           //Couchdb Service Port
            dbuser                           //Couchdb admin username
            dbpassword                       //Cocuhdb admin password
-           authHost                         //AuthService URL
+           authHost                         //AuthService URL with : port number 
            authPort                         //AuthService Port
-           feedParserhost                   //FeedParser URL
+           feedParserhost                   //FeedParser URL with : port number
            feedParserPort                   //FeedParser Port
 
  
@@ -87,7 +87,7 @@ b) For Production deployment
            dbpassword                 //Cocuhdb admin password
            dbuserDB                   //Database name for authservice
            dbcouchAuthD                //Database name for authservice authorization
-           clienturl                   // Client Doamin name for whitelist in Cors  
+           clienturl                   // Client Doamin name for whitelist in Cors virtual host name 
            authHost                    //AuthService URL
            authPort                   //AuthService Port
            feedParserhost             //FeedParser URL
@@ -102,23 +102,16 @@ Enter virtual host name in  Dbhost,authost,feedParserhost respectively for Produ
 
 
            dbprotocol                      //like http or https
-           dbhost                           //URL of  couch db database 
+           dbhost                           //URL of  couch db database virtual host name
            dbPort                           //Couchdb Service Port
            dbuser                           //Couchdb admin username
            dbpassword                       //Cocuhdb admin password
-           authHost                         //AuthService URL
+           authHost                         //AuthService URL  virtual host name
            authPort                         //AuthService Port
-           feedParserhost                   //FeedParser URL
+           feedParserhost                   //FeedParser URL     virtual host name
            feedParserPort                   //FeedParser Port
   
-   3) Change the value of host in config of dbserver from dbhostwidport to dbhost in index.js of iihs_couch_auth service
-   
-                var config = {
-              dbServer: {
-                --host: dbhostwidport
-                ++host:dbhost
-                }
-                }
+  
    
 Navigate to the iihs_couch_services in your docker terminal
 
