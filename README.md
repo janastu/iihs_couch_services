@@ -1,7 +1,15 @@
 # iihs_couch_services
 Docker Services for IIHS Curation Dashboard
 
-Individual Services should be cloned from the git repositery.
+## Installation of Docker
+
+  Installation of Docker ToolBox in Windows from the [Docker Official](https://docs.docker.com/toolbox/toolbox_install_windows/
+  
+  Installtation of Docker CE in Linux from the [DOcker Officail](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+  
+After Succesful Installation, Open the Dockertool Box in Windows / Command Prompt in Linux to Build & Run the IIHS_COUCH_SERVICE  
+  
+##Individual Services should be cloned from the git repositery.
 
 1. IIHS_CURATION_DASHBAORD
 
