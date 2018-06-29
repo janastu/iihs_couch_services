@@ -3,19 +3,24 @@ Docker Services for IIHS Curation Dashboard
 
 Individual Services should be cloned from the git repositery.
 
-iihs_curation_dashboard is for client  application which contains the Web Application and it can be cloned from the url https://github.com/janastu/iihs_curation_dashboard
+1. IIHS_CURATION_DASHBAORD
+
+iihs_curation_dashboard is for client  application which contains the Web Application and it can be cloned from the [Github url]( https://github.com/janastu/iihs_curation_dashboard)
+
+2.IIHS_CURATION_AUTH
+
+iihs_curation_auth is for supperlogin service which is used for User Registration and Login Purpose  it can be cloned from the [Github Url](https://github.com/janastu/iihs_curation_auth)
+
+3.IIHS_CURATION_FEEDPARSER
+
+iihs_curation_feedparser  contains the Services used to parse feeds from xml link and response back the JSON object , it can be cloned from the [Github url]( https://github.com/janastu/iihs_curation_feedparser)
+
+4.IIHS_CURATION_COUCH
+
+iihs_curation_couch contians the couchdb database for the application and it can be cloned from the [Github url ](https://github.com/janastu/iihs_curation_couch)
 
 
-iihs_curation_auth is for supperlogin service which is used for User Registration and Login Purpose  it can be cloned from the url 
-
-https://github.com/janastu/iihs_curation_auth
-
-iihs_curation_feedparser  contains the Services used to parse feeds from xml files and it can be cloned from the url  https://github.com/janastu/iihs_curation_feedparser
-
-iihs_curation_couch contians the couchdb database for the application and it can be cloned from the url https://github.com/janastu/iihs_curation_couch
-
-
-Installation and Configuration
+# Installation and Configuration
 
   1) Open Terminal and clone the project https://github.com/janastu/iihs_couch_services
 
@@ -31,12 +36,27 @@ Installation and Configuration
           
   
   
-  Set the admin username and password for couchdb in local.ini files of the iihs_curation_couch  in admin section as below before building docker file
-  
-             [admins]
-             <username>=<password>
+## Configure the IIHS_CURATION_COUCH
+
+Configurations to be done in local.ini inside iihs_curation_couch folder 
+
+### Admin Username and Password
+
+[admins]
+;username=password                           // Set the Username and Passowrd in this Section
+line no 101 and 102 in local.ini
+
+### Enabling Cors in Couch DB
+
+[cors]
+origins = *                                  // Client URL or * for all origins
+credentials = true
+methods = GET, PUT, POST, HEAD, DELETE
+headers = accept, authorization, content-type, origin, referer, x-csrf-token
+line no 103 and 107 in local.ini
  
- To build the docker file changes the configurations as follows
+ 
+ ## To build the docker file changes the configurations as follows
 
 a) For local deployment
 
@@ -116,41 +136,16 @@ Enter virtual host name in  Dbhost,authost,feedParserhost respectively for Produ
 Navigate to the iihs_couch_services in your docker terminal
 
 
-Build the Dockerfile using    
+## Build the Dockerfile using    
 
      docker-compose build
 
-Run the Dockerfile using     
+## Run the Dockerfile using     
     
     docker-compose up
    
    
+# Test the Individual Services
 
-Test the Superlogin Services using Postman (https://www.getpostman.com/)
+Open the IIHS_CURATION_DASHBOARD IP address / Virtual Host Name in browser and test the client application which internally test the other individually service
 
-   1) Open Postman and make the HTTP Post request to authservice with port number with /auth/register in the url like authurl:port/auth/register 
-   
-   2) In Authoriazation click on Basic Auth and type username and password of Couchdb Databse and update the preview request
-   
-   3) In Body use x-www-form-urlencoded
-       
-       name:John
-       username:johnsmaith
-       email:john@gmail.com
-       password:john12345
-       confirmPassword:john12345
-      
-   4) Make the post request, if the response is "User Created Successfully" then the Superlogin service is configured with Couchdb Database
-   
-   
- 
- Running IIHS Application
-  
-  Navigate to the domain name and create a user by clicking Registration and then use the credientials and login to the IIHS  Applications . 
-
-    
-   
-   
-   
- 
- 
