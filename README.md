@@ -147,5 +147,5 @@ Navigate to the iihs_couch_services in your docker terminal
    
 # Test the Individual Services
 
-Open the IIHS_CURATION_DASHBOARD IP address / Virtual Host Name in browser and test the client application which internally test the other individually service
+Open the IIHS_CURATION_DASHBOARD IP address / Virtual Host Name in browser and test the client application which internally test the other services.
 
